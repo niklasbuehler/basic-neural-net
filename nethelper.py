@@ -116,7 +116,7 @@ def trainnet():
             # scale and shift the inputs
             inputs = (numpy.asfarray(all_values[1:]) / 255.0 * 0.99) +0.01
             # create the target output valies (all 0.1, except the desired label which is 0.99)
-            targets = numpy.zeros(output_nodes) + 0.01
+            targets = numpy.zeros(net.onodes) + 0.01
             # all_values[0] is the target label for this record
             targets[int(all_values[0])] = 0.99
             net.train(inputs, targets)
@@ -179,8 +179,7 @@ def testnet():
 def __showimage(all_values):
     # reshape the received data to an image array
     image_array = all_values.reshape((28, 28))
-    # show this data in a new window
-    matplotlib.pyplot.close()
+    # show this data in an extra window
     matplotlib.pyplot.imshow(image_array, cmap='Greys', interpolation='None')
     matplotlib.pyplot.show()
     pass
@@ -247,15 +246,3 @@ print "\033[1m\033[95m"
 print "[NEURAL NETWORK]\033[0m"
 print "\033[95m>Welcome to this basic approach of a neural network in python.\n>Type 'guide()' for help.\n>Type 'quit()' to quit.\n>Have fun! :)"
 print "\033[0m"
-
-# number of input, hidden and output nodes
-input_nodes = 784
-hidden_nodes = 200
-output_nodes = 10
-# learning rate is 0.1
-learning_rate = 0.1
-# learning epochs is 5
-learning_epochs = 5
-# return instance of neural network
-# TODO remove this -> makes file kinda more abstract (but is less practical)
-# net = neuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate, learning_epochs)
