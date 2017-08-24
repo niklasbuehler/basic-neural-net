@@ -4,7 +4,7 @@ Just a basic neural network, written in python.
 Its current accuracy is **~ 97.31%!**
 
 Use
-  ’$ .\start.sh’
+  `$ .\start.sh`
 to start the script.
 
 Recommended Configuration:
