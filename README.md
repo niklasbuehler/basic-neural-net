@@ -1,8 +1,7 @@
 # basic-neural-net
 
-Just a basic neural network, written in python
-The current accuracy is
-# ~ 97.31%!
+Just a basic neural network, written in python.
+Its current accuracy is **~ 97.31%!**
 
 Use
   ’$ .\start.sh’
