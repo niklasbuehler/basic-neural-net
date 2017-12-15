@@ -6,10 +6,10 @@ from random import randint
 import scipy.misc
 
 # log starting information
-print "\033[1m\033[95m"
-print "[NEURAL NETWORK]\033[0m"
-print "\033[95m>Welcome to this basic approach of a neural network in python.\n>Type 'guide()' for help.\n>Type 'quit()' to quit.\n>Have fun! :)"
-print "\033[0m"
+print("\033[1m\033[95m")
+print("[NEURAL NETWORK]\033[0m")
+print("\033[95m>Welcome to this basic approach of a neural network in python.\n>Type 'guide()' for help.\n>Type 'quit()' to quit.\n>Have fun! :)")
+print("\033[0m")
 
 # turn on interactive mode for pyplot
 matplotlib.pyplot.ion()
@@ -19,15 +19,15 @@ def createnet(input_nodes, hidden_nodes, output_nodes, learning_rate, learning_e
     global net
     net = neuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate, learning_epochs)
     # log info
-    print "\033[1m\033[94m"
-    print "[INITIALIZE NETWORK]\033[0m"
-    print "\033[94m   stats:"
-    print "  -"+str(input_nodes)+" input nodes"
-    print "  -"+str(hidden_nodes)+" hidden nodes"
-    print "  -"+str(output_nodes)+" output nodes"
-    print "  -"+str(learning_rate)+" learning rate"
-    print "  -"+str(learning_epochs)+" learning epochs."
-    print "\033[0m"
+    print("\033[1m\033[94m")
+    print("[INITIALIZE NETWORK]\033[0m")
+    print("\033[94m   stats:")
+    print("  -"+str(input_nodes)+" input nodes")
+    print("  -"+str(hidden_nodes)+" hidden nodes")
+    print("  -"+str(output_nodes)+" output nodes")
+    print("  -"+str(learning_rate)+" learning rate")
+    print("  -"+str(learning_epochs)+" learning epochs.")
+    print("\033[0m")
     pass
 
 # starts the training process
@@ -41,10 +41,10 @@ def trainnet():
     training_data_file.close()
 
     # log info
-    print "\033[94m\033[1m"
-    print "[START TRAINING]\033[0m"
-    print "\033[94m  -"+str(len(training_data_list))+" examples"
-    print "  -"+str(net.epochs)+" epochs\033[0m"
+    print("\033[94m\033[1m")
+    print("[START TRAINING]\033[0m")
+    print("\033[94m  -"+str(len(training_data_list))+" examples")
+    print("  -"+str(net.epochs)+" epochs\033[0m")
 
     # train the neural network
     for e in range(net.epochs):
@@ -60,12 +60,12 @@ def trainnet():
             targets[int(all_values[0])] = 0.99
             net.train(inputs, targets)
             # log progress
-            # print "learning number "+all_values[0]
+            # print("learning number "+all_values[0]
             pass
-        print "\033[92m  >Epoch #"+str(e)+" done\033[0m"
+        print("\033[92m  >Epoch #"+str(e)+" done\033[0m")
         pass
-    print "\033[92m>Training complete"
-    print "\033[0m"
+    print("\033[92m>Training complete")
+    print("\033[0m")
     pass
 
 # tests the net with all testing data
@@ -82,9 +82,9 @@ def testnet():
     test_data_file.close()
 
     # log info
-    print "\033[94m\033[1m"
-    print "[START TESTING]\033[0m"
-    print "\033[94m  -"+str(len(test_data_list))+" test queries\033[0m"
+    print("\033[94m\033[1m")
+    print("[START TESTING]\033[0m")
+    print("\033[94m  -"+str(len(test_data_list))+" test queries\033[0m")
 
     # go through all the records in the test data set
     for record in test_data_list:
@@ -107,13 +107,13 @@ def testnet():
             scorecard.append(0)
             pass
         # print info
-        # print message+" (Network: "+str(label)+" | Correct: "+str(correct_label)+")"
+        # print message+" (Network: "+str(label)+" | Correct: "+str(correct_label)+")
         pass
     # calculate the performance score, the fraction of correct answers
     scorecard_array = numpy.asarray(scorecard)
     performance = (scorecard_array.sum()*1.0) / (scorecard_array.size*1.0)
-    print "\033[92m>Performance: "+str(performance)
-    print "\033[0m"
+    print("\033[92m>Performance: "+str(performance))
+    print("\033[0m")
     pass
 
 # tests a specific example
@@ -127,9 +127,9 @@ def test(id):
     test_data_file.close()
 
     # log info
-    print "\033[94m\033[1m"
-    print "[TESTING EXAMPLE]\033[0m"
-    print "\033[94m  -Testing example #"+str(id)+"\033[0m"
+    print("\033[94m\033[1m")
+    print("[TESTING EXAMPLE]\033[0m")
+    print("\033[94m  -Testing example #"+str(id)+"\033[0m")
 
     # get the first test record
     all_values = test_data_list[id].split(',')
@@ -138,12 +138,12 @@ def test(id):
     # get the guess from the network
     netanswer = numpy.argmax(net.query((numpy.asfarray(all_values[1:]) / 255.0 * 0.99) + 0.01))
     # print the label
-    print "\033[93m  >Guess: "+str(netanswer)+"\033[0m"
+    print("\033[93m  >Guess: "+str(netanswer)+"\033[0m")
     if netanswer == int(all_values[0]):
-        print "\033[92m>Correct"
+        print("\033[92m>Correct")
     else:
-        print "\033[91m>Wrong"
-    print "\033[0m"
+        print("\033[91m>Wrong")
+    print("\033[0m")
     pass
 
 # tests a random example
@@ -160,9 +160,9 @@ def testrandom():
     id = randint(0, len(test_data_list)-1)
 
     # log info
-    print "\033[94m\033[1m"
-    print "[RANDOM TEST]\033[0m"
-    print "\033[94m  -Testing example #"+str(id)+"\033[0m"
+    print("\033[94m\033[1m")
+    print("[RANDOM TEST]\033[0m")
+    print("\033[94m  -Testing example #"+str(id)+"\033[0m")
 
     # get the first test record
     all_values = test_data_list[id].split(',')
@@ -171,12 +171,12 @@ def testrandom():
     # get the guess from the network
     netanswer = numpy.argmax(net.query((numpy.asfarray(all_values[1:]) / 255.0 * 0.99) + 0.01))
     # print the label
-    print "\033[93m  >Guess: "+str(netanswer)+"\033[0m"
+    print("\033[93m  >Guess: "+str(netanswer)+"\033[0m")
     if netanswer == int(all_values[0]):
-        print "\033[92m>Correct"
+        print("\033[92m>Correct")
     else:
-        print "\033[91m>Wrong"
-    print "\033[0m"
+        print("\033[91m>Wrong")
+    print("\033[0m")
     pass
 
 # tests an image in the '/images' folder
@@ -192,15 +192,15 @@ def testimage(image_file_name):
     __showimage(img_data)
 
     # log info
-    print "\033[94m\033[1m"
-    print "[TEST IMAGE]\033[0m"
-    print "\033[94m  -Grabbing image from 'images/"+image_file_name+"'\033[0m"
+    print("\033[94m\033[1m")
+    print("[TEST IMAGE]\033[0m")
+    print("\033[94m  -Grabbing image from 'images/"+image_file_name+"'\033[0m")
 
     # get the guess from the network
     netanswer = numpy.argmax(net.query(img_data))
     # print the label
-    print "\033[93m>Guess: "+str(netanswer)
-    print "\033[0m"
+    print("\033[93m>Guess: "+str(netanswer))
+    print("\033[0m")
     pass
 
 def showidea(label):
@@ -209,10 +209,10 @@ def showidea(label):
         return
 
     # log info
-    print "\033[94m\033[1m"
-    print "[SHOWING IDEA]\033[0m"
-    print "\033[94m  -Label: "+str(label)
-    print "\033[0m"
+    print("\033[94m\033[1m")
+    print("[SHOWING IDEA]\033[0m")
+    print("\033[94m  -Label: "+str(label))
+    print("\033[0m")
 
     # create the output signals for this label
     targets = numpy.zeros(net.onodes) + 0.01
@@ -224,25 +224,25 @@ def showidea(label):
     pass
 
 def guide():
-    print "\033[94m\033[1m"
-    print "[GUIDE]\033[0m"
-    print "\033[94m  -createnet(input_nodes, hidden_nodes, output_nodes, learning_rate, learning_epochs)"
-    print "  -trainnet()"
-    print "  -testnet()"
-    print "  -test(id)"
-    print "  -testrandom()"
-    print "  -testimage(image_file_name)"
-    print "  -showidea(label)"
-    print "  -quit()"
-    print "\033[0m"
+    print("\033[94m\033[1m")
+    print("[GUIDE]\033[0m")
+    print("\033[94m  -createnet(input_nodes, hidden_nodes, output_nodes, learning_rate, learning_epochs)")
+    print("  -trainnet()")
+    print("  -testnet()")
+    print("  -test(id)")
+    print("  -testrandom()")
+    print("  -testimage(image_file_name)")
+    print("  -showidea(label)")
+    print("  -quit()")
+    print("\033[0m")
 
     pass
 
 def __error():
-    print "\033[1m\033[91m"
-    print "[ERROR]\033[0m"
-    print "\033[91m  -You have to create a network first.\n  -Type guide() for help."
-    print "\033[0m"
+    print("\033[1m\033[91m")
+    print("[ERROR]\033[0m")
+    print("\033[91m  -You have to create a network first.\n  -Type guide() for help.")
+    print("\033[0m")
     pass
 
 def __showimage(all_values):
